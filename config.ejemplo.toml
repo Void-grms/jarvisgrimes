@@ -1,0 +1,87 @@
+# Configuración de Jarvis local. Copia este archivo como config.toml (instalar.bat lo hace solo).
+
+[usuario]
+nombre = "Usuario"
+zona_horaria = "America/Lima"
+
+[conocimiento]
+carpeta = ""   # carpeta Markdown; por defecto se crea Conocimiento dentro de Documentos/Jarvis
+busqueda_semantica = false
+modelo_embeddings = "embeddinggemma:300m-qat-q4_0"
+
+[llm]
+# qwen3.5:2b responde rápido (meta 2-3 s). qwen3.5:4b es más listo pero ~1 s más lento.
+modelo = "qwen3.5:2b"
+max_tokens = 160        # respuestas cortas = habla antes y termina antes
+turnos_memoria = 6      # cuántos intercambios recuerda dentro de la conversación
+
+[stt]
+# Modelo multilingüe para voz en español.
+modelo = "small"
+hilos = 4
+
+[voz]
+modelo_piper = "voces/es_MX-ald-medium.onnx"
+velocidad = 1.18
+pausa_ms = 95
+tono_semitonos = 0.7
+
+[escucha]
+palabra_clave = "jarvis"
+minutos_conversacion = 5     # después de esto, solo responde si dices "Jarvis..."
+silencio_ms = 700            # pausa que marca el fin de tu frase
+saludar_al_iniciar = true
+sugerir_pendientes = true    # ofrecer un siguiente paso al conversar sobre pendientes
+anunciar_resumen = false     # true = al saludar te dice cuántos pendientes tienes
+espera_respuesta_saludo_s = 25   # después del saludo espera en silencio y vuelve al reposo
+resumen_matutino = true          # el primer saludo de la mañana incluye clima, clases de hoy y correos
+confirmar_aperturas = false      # true = pregunta "¿Abro X?" si no empezaste con "Jarvis"
+
+[gmail]
+habilitado = true
+consulta = "is:unread category:primary newer_than:7d"
+
+[clementina]
+habilitado = true
+modo = "ics"     # "ics" (enlace de calendario, recomendado) o "sesion"
+url_ics = ""     # lo llena conectar-clementina.bat
+
+[sync]
+minutos_entre_sync = 30
+
+[navegador]
+programa = "chrome"            # "chrome" o "edge"
+perfil_predeterminado = ""     # nombre del perfil que se usa si no dices otro (vacío = el último usado)
+
+[sitios]
+# Tus propios atajos: di "abre <nombre>"
+# "campus upao" = "https://..."
+
+[documentos]
+carpeta = ""    # vacío = Documentos\Jarvis
+modelo = ""     # vacío = el mismo modelo; "qwen3.5:4b" escribe mejor (más lento, hay que bajarlo)
+
+[clima]
+ciudad = "Trujillo"
+latitud = -8.11
+longitud = -79.03
+
+[navegador_jarvis]
+canal = "chrome"   # Chrome con perfil propio que Jarvis controla (WhatsApp Web y tus plataformas)
+
+[plataformas]
+# "entra a <nombre>": abre en el navegador de Jarvis e inicia sesión (presiona Entrar si Chrome
+# autocompletó tus datos; si falta el usuario te lo pide, la contraseña la escribes tú).
+clementina = "https://uvcv.edu.pe/my/"
+# "campus upao" = "https://..."
+
+[archivos]
+carpetas_extra = []   # además de Escritorio, Documentos, Descargas, Imágenes, Videos, Música y OneDrive
+
+[preferencias]
+whatsapp = "web"   # "web" = WhatsApp Web en el navegador; "app" = la aplicación
+
+[interfaz]
+widget = true
+tamano = 200       # diámetro del orbe en píxeles lógicos (120 a 320)
+subtitulos = true

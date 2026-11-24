@@ -1,0 +1,15 @@
+/.venv/
+/datos/
+/voces/
+/_respaldo*/
+/config.toml
+/config.toml.*
+credentials.json
+client_secret*.json
+*_token.json
+.env
+.env.*
+!.env.example
+__pycache__/
+*.py[cod]
+.pytest_cache/
